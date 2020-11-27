@@ -23,7 +23,7 @@ $(document).ready(function(){
             }
 
         })
-     $('#product').html(dataResults)
+    //  $('#product').html(dataResults)
      $('#cat_select').html("<option value='all'>semua</option>" + catResults)
     })
 
@@ -56,6 +56,44 @@ $(document).ready(function(){
       })
     }
 }) //end document jquery
+
+//tespiehighchart
+$(function () {
+  $('#container').highcharts({
+      chart: {
+          type: 'pie'
+      },
+      xAxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      },
+      
+      plotOptions: {
+          series: {
+              cursor: 'pointer',
+              point: {
+                  events: {
+                      click: function() {
+                          location.href = this.options.url;
+                      }
+                  }
+              }
+          }
+      },
+      
+      series: [{
+          data: [{
+              y: 29.9,
+              url: 'http://bing.com/search?q=foo'
+          }, {
+              y: 100.5,
+              url: 'http://bing.com/search?q=bar'
+          }, {
+              y: 106.4,
+              url: 'http://bing.com/search?q=foo+bar'
+          }]        
+      }]
+  });
+});
 
 //PWAServiceWorker
 if ('serviceWorker' in navigator) {
